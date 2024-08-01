@@ -9,6 +9,6 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   renderers: ['@astrojs/renderer-react'],
-  site: 'https://ckteam.vercel.app/',
+  site: 'https://myportfoliosite-eosin.vercel.app/',
   integrations: [mdx(), sitemap(), react()]
 });

@@ -263,7 +263,7 @@ Este código crea un nuevo párrafo cuando se hace clic en el botón "Agregar El
         // Crear un nuevo elemento de enlace
         const nuevoEnlace = document.createElement('a');
         // Asignar atributos al enlace
-        nuevoEnlace.href = 'https://ckteam.vercel.app/';
+        nuevoEnlace.href = 'https://myportfoliosite-eosin.vercel.app/';
         nuevoEnlace.textContent = 'Mi portfolio';
         // Agregar el enlace al contenedor
         contenedor.appendChild(nuevoEnlace);
