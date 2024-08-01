@@ -1,0 +1,383 @@
+@import url("../animations/animation-up-down.css");
+
+@import url("../animations/animation-flicker.css");
+@import url("../animations/animations-slides.css");
+
+
+.hero {
+  transition: 0.9s ease;
+  display: flex;
+  min-height: 100dvh;
+  background: var(--gradient);;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  padding: 15rem 0;
+}
+
+.hero__contenedor {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 56vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__saludo {
+  height: auto;
+}
+
+.hero__titulo {
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.9s;
+  color: var(--seccond-color);
+  font-size: 4.2rem;
+  margin: 29px 0;
+  text-align: center;
+  font-weight: bold;
+  filter: drop-shadow(2 -1px 1px var(--pure-black));
+  line-height: initial;
+}
+
+.hero__titulo span {
+  transition: all 0.9s;
+}
+
+.hero__titulo span:hover {
+  color: var(--blue);
+  filter: drop-shadow(0 0 12px var(--blue));
+}
+
+.flicker-in-1 {
+  animation: flicker-in-1 2s linear 0.5s both;
+  color: var(--seccond-color);
+}
+
+.hero__subtitulo {
+  font-size: 1.5rem;
+  font-family: var(--fira-code);
+  color: var(--green-terminal);
+  padding: 0;
+  margin-top: -3rem;
+  text-align: center;
+  font-weight: bold;
+}
+.hero__subtitulo--span {
+  color: var(--pink-terminal);
+}
+.side__container {
+  transition: all 0.9s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Foto de perfil */
+.side__profile {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.side__img {
+  min-width: 28rem;
+  width: 60%;
+  position: relative;
+  max-width: 29rem;
+}
+
+.img__damage {
+  display: none;
+}
+
+.img__dark {
+  display: none;
+}
+
+.img__ligth {
+  display: block;
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  position: absolute;
+  z-index: 80;
+}
+
+.social__link {
+  position: absolute;
+  z-index: 20;
+}
+
+.social__icon {
+  max-width: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  max-height: 56px;
+  width: 100%;
+  filter: drop-shadow(0 0 12px var(--seccond-color));
+  transition: 0.2s ease-in-out;
+}
+
+.icon-1 {
+  bottom: 43px;
+    right: 74px;
+  transform: translateY(-200px);
+  animation: slideIn 1s ease-in-out forwards;
+}
+
+.social__icon:hover {
+  animation: anim none;
+}
+
+.icon-1 .social__icon {
+  animation: anim 4s ease-out infinite;
+  animation-delay: 3.2s;
+}
+
+.icon-2 {
+  filter: invert(30%) sepia(100%) saturate(1072%) hue-rotate(180deg)
+    brightness(96%) contrast(97%) drop-shadow(0 0 3px var(--pure-black));
+  bottom: -102px;
+  right: 84px;
+  transform: translateY(-600px);
+  animation: expand 0.8s ease forwards;
+}
+
+.icon-2 .social__icon {
+  animation: anim 4s infinite;
+  animation-delay: 2.9s;
+}
+
+.icon-3 {
+  bottom: -75px;
+  right: -141px;
+  transform: translateY(-300px);
+  animation: expand 0.8s ease forwards;
+}
+
+.icon-3 .social__icon {
+  animation: anim 4s infinite;
+  animation-delay: 1s;
+}
+
+.icon-4 {
+  filter: invert(53%) sepia(39%) saturate(3085%) hue-rotate(64deg)
+    brightness(100%) contrast(101%);
+  bottom: 50px;
+  right: -124px;
+  transform: translateY(-300px);
+  animation: expand 1.5s ease-in-out forwards;
+}
+.icon-4 .social__icon {
+  animation: anim 4s infinite;
+  animation-delay: 3s;
+}
+.icon-5 {
+  bottom: -183px;
+  right: -33px;
+  transform: translateY(500px);
+  animation: expand 0.6s ease-in-out forwards 0.8s;
+}
+.icon-5 .social__icon {
+  animation: anim 4s infinite;
+}
+
+/* VISTA DESKTOP */
+
+@media (min-width: 768px) {
+  .hero {
+    justify-content: center;
+    padding: 25rem 0;
+    min-height: 130dvh;
+  }
+
+  .side__img {
+    min-width: 32rem;
+    width: 55%;
+  }
+
+  .hero__contenedor {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: nowrap;
+    height: auto;
+  }
+
+  .hero__titulo {
+    font-size: 6rem;
+    font-weight: 900;
+    padding: 0;
+  }
+
+  .hero__subtitulo {
+    font-size: 2rem;
+  }
+
+  .side__container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60rem;
+  }
+
+  /* Social icons */
+  .social {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .social__icon {
+    max-width: 70px;
+    max-height: 68px;
+    min-width: 68px;
+    min-height: 68px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .social__icon:hover {
+    animation: anim paused;
+    transform: scale(1.3);
+  }
+
+  .social__link:hover {
+    transform: scale(1.2);
+  }
+
+  .icon-1 {
+    top: -168px;
+    right: 68px;
+  }
+
+  .icon-1 .social__icon {
+    animation: anim 4s infinite;
+    animation-delay: 0.9s;
+  }
+
+  .icon-2 {
+    top: 27px;
+    right: 104px;
+  }
+
+  .icon-2 .social__icon {
+    animation: anim 3.4s infinite;
+    animation-delay: 3s;
+  }
+
+  .icon-3 {
+    top: -20px;
+    right: -173px;
+  }
+
+  .icon-3 .social__icon {
+    animation: anim 3.3s infinite;
+    animation-delay: 3.3s;
+  }
+
+  .icon-4 {
+    top: -165px;
+    right: -153px;
+  }
+
+  .icon-4 .social__icon {
+    animation: anim 4s infinite;
+    animation-delay: 3.1s;
+  }
+
+  .icon-5 {
+    top: 112px;
+    right: -33px;
+  }
+
+  .icon-5 .social__icon {
+    animation: anim 4s infinite;
+    animation-delay: 3.3s;
+  }
+
+  .icon-2 .social__icon:hover,
+  .icon-4 .social__icon:hover,
+  .icon-3 .social__icon:hover,
+  .icon-5 .social__icon:hover,
+  .icon-1 .social__icon:hover {
+    animation: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    justify-content: center;
+    padding: 25rem 0;
+    min-height: 130dvh;
+  }
+  .hero__contenedor {
+    justify-content: space-around;
+    margin-top: -16rem;
+    flex-wrap: nowrap;
+    max-width: 1534px;
+    align-self: center;
+    align-items: center;
+  }
+
+  .hero__titulo {
+    font-size: 8rem;
+    font-weight: 700;
+  }
+
+  .hero__subtitulo {
+    font-size: 2rem;
+  }
+
+  .side__img {
+    min-width: 25rem;
+    width: 85%;
+    max-width: 44rem;
+  }
+
+  .social__icon {
+    max-width: 82px;
+    max-height: 82px;
+    min-width: 78px;
+    min-height: 78px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .icon-1 {
+    top: -214px;
+    right: 117px;
+  }
+
+  .icon-1 .social__icon {
+    width: 100px;
+  }
+
+  .icon-2 {
+    top: 44px;
+    right: 160px;
+  }
+
+  .icon-3 {
+    top: -20px;
+    right: -216px;
+  }
+
+
+
+  .icon-4 {
+    top: -239px;
+    right: -146px;
+  }
+
+
+  .icon-5 {
+    top: 181px;
+    right: -44px;
+  }
+}

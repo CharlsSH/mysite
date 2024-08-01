@@ -1,0 +1,32 @@
+---
+import Header from "../layouts/Header.astro";
+
+const { origin, target } = Astro.props;
+---
+
+<Header>
+  {
+    origin.map((link) => (
+      <li class="menu__list">
+        {target == "_blank" ? (
+          <a
+            class="menu__link menu__hamburger-link"
+            target={link.target}
+            rel="nofollow noreferrer noopener"
+            href={link.href}
+          >
+            {link.text}
+          </a>
+        ) : (
+          <a
+            class="menu__link menu__hamburger-link"
+            target={link.target}
+            href={link.href}
+          >
+            {link.text}
+          </a>
+        )}
+      </li>
+    ))
+  }
+</Header>

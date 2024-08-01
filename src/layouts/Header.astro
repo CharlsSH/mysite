@@ -1,0 +1,49 @@
+---
+import MainLogo from "../components/MainLogo.astro";
+import IconLogo from "../components/atoms/IconLogo.astro";
+import "../styles/components/header.css";
+---
+
+<script>
+  const headerBg = document.querySelector(".header");
+  const panelActive = document.querySelector(".panel");
+  function hamburgerMenu(panelBtn, panel, menuLink) {
+    document.addEventListener("click", (e) => {
+      if (e.target.matches(panelBtn) || e.target.matches(`${panelBtn} *`)) {
+        document.querySelector(panel).classList.toggle("is-active");
+        document.querySelector(panelBtn).classList.toggle("is-active");
+      }
+      if (e.target.matches(menuLink)) {
+        document.querySelector(panel).classList.remove("is-active");
+        document.querySelector(panelBtn).classList.remove("is-active");
+      }
+      if(panelActive.classList.contains("is-active")){
+        headerBg.classList.remove("blur");
+      }else{
+       headerBg.classList.add("blur");
+      }
+    });
+  }
+  document.addEventListener("DOMContentLoaded", (e) => {
+    hamburgerMenu(".panel__btn", ".panel", ".menu__link");
+  });
+</script>
+<header class="header blur" id="header">
+  <MainLogo />
+  <!-- Menu  -->
+  <nav class="menu__nav panel" id="panel">
+    <ul class="menu__ul">
+      <IconLogo/>
+      <slot />
+    </ul>
+  </nav>
+</header>
+<button
+  class="panel__btn hamburger hamburger--emphatic"
+  type="button"
+  aria-label="menu"
+>
+  <span class="hamburger-box">
+    <span class="hamburger-inner" id="hamburguesa"></span>
+  </span>
+</button>

@@ -1,0 +1,107 @@
+---
+import "../styles/about-section.css";
+import "../styles/about-section.css";
+// import YoutubeLastvid from "../components/YoutubeLastvid.astro";
+import BaseHead from "../components/BaseHead.astro";
+import ToogleDarkBtn from "../ToggleDarkBtn.astro";
+import BtnToTop from "../components/BtnToTop.astro";
+import Footer from "../components/Footer.astro";
+import DarkBg from "../components/DarkBg.astro";
+import NavLinks from "../components/NavLinks.astro";
+import CardTerminal from "../layouts/CardTerminal.astro";
+import ContactSocialIcons from "../components/ContactSocialIcons.astro";
+import VsCodeTheme from "../components/VsCodeTheme.astro"
+import Divider4 from "../components/atoms/Dividers/Divider4.astro";
+import { about } from "../data/MenuData";
+import DividerTop from "../components/atoms/Dividers/DividerTop.astro";
+const { title, description } = Astro.props;
+
+
+---
+
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <NavLinks origin={about} />
+    <ToogleDarkBtn />
+    <BtnToTop />
+    <main>
+      <section class="about__intro" id="about">
+        <div class=" about__imageIcons" ata-aos="fade-up">
+          <img
+            class="about__profile"
+            src="../img/ckteam_retrato.jpg"
+            alt="ckteamdev picture"
+          />
+          <div class="icons__container">
+            <ContactSocialIcons />
+          </div>
+        </div>
+        <CardTerminal >
+          <h2 class="about__titulo--post post__titulo">
+            C <span class="span__dark" id="span-titulo2"> & K</span> Team
+          </h2>
+          <p class="terminal__content terminal__content--p">
+            ≥ If we were asked to highlight a single quality in ourself, it would
+            be
+            <span class="terminal__content terminal__content--span"
+              >the love for what We do.</span
+            > Programming, in particular, is something we engage in for the sheer
+            pleasure of creating.
+          </p>
+          <p class="terminal__content terminal__content--color">
+            As a frontend developer, we consider ourself an artisan of CSS. We take
+            joy in crafting beautiful and interactive components.
+          </p>
+          <p class="terminal__content terminal__content--p">
+            We studied in the "One Oracle Next Education" program, where We had
+            the opportunity to  <span class="terminal__content terminal__content--span"
+            > be recognized as a "One Helper" for our supportive
+            role in guiding my peers on their journey to becoming developers.<span/> We
+            also initiated a live streaming program to provide valuable
+            information, covering both hard and soft skills.
+          </p>
+          <p class="terminal__content terminal__content--color">
+            We were chosen to showcase my project live and, ultimately, deliver
+            the graduation speech for the program. Currently, We remain actively
+            involved as part of the student committee of One Oracle Next
+            Education, where we continue organizing events for our alumni.
+          </p>
+        </CardTerminal>
+      </section>
+      <Divider4/>
+      <!-- <VsCodeTheme/> -->
+      <!-- <DividerTop colorLight="fill__black" colorDark="dark__black" dividerBg="black" dividerBgDark="" />
+      <section class="about__page" id="ytChannel">
+        <YoutubeLastvid />
+      </section>
+      <section class="about__text"></section> -->
+    </main>
+    <DarkBg />
+    <Footer />
+    <style>
+      .about__page {
+        width: 100%;
+        padding: 1rem .4rem 0 .4rem;
+        height: auto;
+      }
+      .post__titulo {
+        color: white;
+      }
+      .text_content {
+        color: white;
+      }
+      @media screen and (min-width: 768px) {
+        .about__page {
+        width: 100%;
+        padding: 1rem 2rem 0 2rem;
+        height: auto;
+      }
+      }
+    </style>
+
+  </body>
+</html>

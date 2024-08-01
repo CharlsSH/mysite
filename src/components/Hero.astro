@@ -1,0 +1,48 @@
+---
+import "../styles/components/hero.css";
+import DarkBg from "./DarkBg.astro";
+import HeroIcons from "./HeroIcons.astro";
+---
+<section class="hero" id="hero" transition:persist>
+  <div class="hero__contenedor">
+    <div class="hero__saludo">
+      <h1
+        class="hero__titulo"
+        id="titulo-saludo"
+        data-section="hero"
+        data-value="heroTitulo"
+      >
+        Hi! We are C & K <span class="flicker-in-1 span__dark">Team</span>
+      </h1>
+      <h2
+        class="hero__subtitulo"
+        id="subtitulo"
+        data-section="hero"
+        data-value="heroSubtitulo"
+      >
+        ≥ Javascript developer and AI Engineer in <span class="hero__subtitulo--span"
+          >Japan</span
+        >
+      </h2>
+    </div>
+    <aside class="side__container">
+      <img
+        class="side__img img__ligth"
+        src="./img/avatar_C.jpg"
+        alt="C photo"
+      />
+      <img
+        class="side__img img__dark"
+        src="./img/avatar_K.jpg"
+        alt="K photo"
+      />
+      <img
+        class="side__img img__damage"
+        src="./img/IA_damage.jpg"
+        alt="C & K Team photo"
+      />
+      <HeroIcons />
+    </aside>
+  </div>
+  <DarkBg />
+</section>

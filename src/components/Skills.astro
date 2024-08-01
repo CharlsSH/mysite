@@ -1,0 +1,39 @@
+---
+import CardSkill from "./CardSkills";
+import CardTerminal from "../layouts/CardTerminal.astro";
+import Button from "./Button.astro";
+---
+
+<section class="skills" id="skills">
+  <h2 data-aos="fade-up" class="titulo titulo__dark">Skills</h2>
+  <div class="skills__container max__width">
+    <CardTerminal animation="fade-right">
+      <p class="terminal__content terminal__content--p">
+        ≥ With a solid foundation in
+        <span class="terminal__content terminal__content--span"
+          >both frontend and backend development, We bring websites to life with intuitive interfaces and robust functionalities.</span
+        >
+      </p>
+      <p class="terminal__content terminal__content--color">
+        ≥ But that’s not all! We also delve into the fascinating world of Artificial Intelligence, crafting smart algorithms and machine learning models that drive innovation.
+      </p>
+      <p class="terminal__content terminal__content--color">
+        Whether it’s developing responsive web applications or designing cutting-edge AI systems, We're on a mission to merge technology and creativity in the most impactful ways.
+      </p>
+      <p class="terminal__content terminal__content--color">
+        😊Let’s build the future of the web and AI together!
+      </p>
+      <p class="terminal__content terminal__content--color">
+        Feel free to tweak and personalize it to match your style and personality!
+      </p>
+      <Button
+        href="./docs/Charls_Stone_CV.pdf"
+        text="Download CV"
+        target="_blank"
+      />
+    </CardTerminal>
+	  <div class="skills__cards-container">
+	<CardSkill />
+	</div>
+  </div>
+</section>

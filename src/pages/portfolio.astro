@@ -1,0 +1,273 @@
+---
+/* This component handles the rendering of portfolio cards based on selected skills.
+   It initially renders all cards and provides functionality to filter cards by skill. */
+// Importing necessary Astro components
+import BaseHead from "../components/BaseHead.astro";
+import ToogleDarkBtn from "../ToggleDarkBtn.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts.js";
+import BtnToTop from "../components/BtnToTop.astro";
+import "../styles/pages/portfolio.css";
+import NavLinks from "../components/NavLinks.astro";
+import { skillIcons } from "../data/portfolioData.js";
+import { portfolio } from "../data/MenuData";
+---
+
+<script>
+  // Importing necessary data
+  import { portafolioData, skillIcons } from "../data/portfolioData.js";
+
+  // Variable to track if any skill button has been clicked
+  let clicked = false;
+
+  // Selecting DOM elements
+  const buttons = document.querySelectorAll("[data-skill]");
+  const cardsContainer = document.querySelector(".cards__container");
+  const allButton = document.querySelector("[data-All]");
+
+  // Function to render all portfolio cards
+  function renderAllCards() {
+    const allCardsHTML = portafolioData
+      .map(
+        (data) => `
+        <div class="portafolio__tarjeta" >
+            <div class="portafolio__cara faceA card__content caja__dark__portafolio">
+                <div class="img__container">
+                    <img
+                        class="portafolio__img"
+                        src="${data.imgSrc}"
+                        alt="${data.titulo}"
+                    />
+                </div>
+                <div class="container__info">
+                    <h3 class="portafolio__subtitulo titulo__dark">
+                        ${data.titulo}
+                    </h3>
+                    <div class="skills__used">
+                        ${data.skills
+                          .map(
+                            (skill) => `
+                            <div class="tecnology" >
+                                <iconify-icon
+                                    icon="${skillIcons[skill] || ""}"
+                                    width="22"
+                                />
+                            </div>
+                        `
+                          )
+                          .join("")}
+                    </div>
+                </div>
+            </div>
+            <div class="portafolio__cara faceB  caja__dark__portafolio">
+                <p class="portafolio__descripcion titulo__dark">
+                    ${data.descripcion}
+                </p>
+                <div class="portafolio__botobnes">
+                    <a
+                        class="portafolio__btn boton titulo__dark"
+                        href="${data.demoURL}"
+                        target="_blank"
+                        rel="nofollow noreferrer noopener"
+                    >
+                        <span data-section="portafolio" data-value="demo">
+                            View Demo
+                        </span>
+                    </a>
+                    <a
+                        class="portafolio__btn boton titulo__dark"
+                        href="${data.repoURL}"
+                        target="_blank"
+                        rel="nofollow noreferrer noopener"
+                    >
+                        <span data-section="portafolio" data-value="repo">
+                            View Repo
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    `
+      )
+      .join("");
+    // Render all cards in the container
+    cardsContainer.innerHTML = allCardsHTML;
+  }
+  // Render all cards initially
+  renderAllCards();
+
+  // Add click event listener to skill buttons
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      clicked = true;
+      const skill = button.getAttribute("data-skill");
+      const projectsWithSkill = portafolioData.filter((project) =>
+        project.skills.includes(skill)
+      );
+      // Generate HTML template string for filtered cards
+      const filteredCardsHTML = projectsWithSkill
+        .map(
+          (data) =>
+            `
+          <div class="portafolio__tarjeta" >
+              <div class="portafolio__cara faceA card__content caja__dark__portafolio">
+                  <div class="img__container">
+                      <img
+                          class="portafolio__img"
+                          src="${data.imgSrc}"
+                          alt="${data.titulo}"
+                      />
+                  </div>
+                  <div class="container__info">
+                      <h3 class="portafolio__subtitulo titulo__dark">
+                          ${data.titulo}
+                      </h3>
+                      <div class="skills__used">
+                          ${data.skills
+                            .map(
+                              (skill) => `
+                              <div class="tecnology" >
+                                  <iconify-icon
+                                      icon="${skillIcons[skill] || ""}"
+                                      width="22"
+                                  />
+                              </div>
+                          `
+                            )
+                            .join("")}
+                      </div>
+                  </div>
+              </div>
+              <div class="portafolio__cara faceB  caja__dark__portafolio">
+                  <p class="portafolio__descripcion titulo__dark">
+                      ${data.descripcion}
+                  </p>
+                  <div class="portafolio__botobnes">
+                      <a
+                          class="portafolio__btn boton titulo__dark"
+                          href="${data.demoURL}"
+                          target="_blank"
+                          rel="nofollow noreferrer noopener"
+                      >
+                          <span data-section="portafolio" data-value="demo">
+                              View Demo
+                          </span>
+                      </a>
+                      <a
+                          class="portafolio__btn boton titulo__dark"
+                          href="${data.repoURL}"
+                          target="_blank"
+                          rel="nofollow noreferrer noopener"
+                      >
+                          <span data-section="portafolio" data-value="repo">
+                              View Repo
+                          </span>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      `
+        )
+        .join("");
+
+      // Render filtered cards in the container
+      cardsContainer.innerHTML = filteredCardsHTML;
+    });
+  });
+
+  allButton.addEventListener("click", () => {
+    renderAllCards();
+  });
+</script>
+
+<!-- HTML structure -->
+<html lang="en">
+  <head>
+    <!-- Head section -->
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <!-- Navigation, toggle dark button, button to top, and main content -->
+    <NavLinks origin={portfolio} />
+    <ToogleDarkBtn />
+    <BtnToTop />
+    <main>
+      <!-- Portfolio section -->
+      <section class="portfolio__padre">
+        <!-- Button to show all cards -->
+        <div class="buttons__container">
+          <div class="btn__caja">
+            <button class="skill-button" data-All> All</button>
+            {
+              /*  Render buttons with icons for each available skill  */
+              Object.entries(skillIcons).map(([skill, icon]) => (
+                <button data-skill={skill} class="skill-button">
+                  <iconify-icon icon={icon} width="22" />
+                </button>
+              ))
+            }
+          </div>
+        </div>
+        <!-- Container for portfolio cards -->
+        <div class="cards__container"></div>
+      </section>
+    </main>
+    <!-- Dark background, footer, and styles -->
+    <Footer />
+    <style>
+      .portfolio__padre {
+        width: 100%;
+        padding: 16rem 1rem 10rem;
+        min-height: 85dvh;
+      }
+      .dark-mode .portfolio__padre {
+        background: var(--gradient);
+      }
+      .buttons__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 3rem;
+      }
+      .btn__caja {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      .skill-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.8rem 1.4rem;
+        border-radius: 15px;
+        font-size: 1.6rem;
+        width: 6%;
+        min-width: 6rem;
+        color: var(--green-terminal);
+        background-color: var(--dark-purple);
+        border: 1px solid var(--green-terminal);
+        cursor: pointer;
+        transition: transform 0.3s ease-out;
+      }
+      .skill-button:hover {
+        transform: scale(1.1);
+      }
+      .cards__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        height: auto;
+        gap: 3rem;
+      }
+      @media screen and (min-width: 768px) {
+        .btn__caja {
+          width: 80%;
+        }
+      }
+    </style>
+  </body>
+</html>

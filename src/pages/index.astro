@@ -1,0 +1,53 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Hero from "../components/Hero.astro";
+import ToogleDarkBtn from "../ToggleDarkBtn.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Skills from "../components/Skills.astro";
+import BtnToTop from "../components/BtnToTop.astro";
+import Divider1 from "../components/atoms/Dividers/Divider1.astro";
+import DividerTop from "../components/atoms/Dividers/DividerTop.astro";
+import Divider4 from "../components/atoms/Dividers/Divider4.astro";
+import Tools from "../components/Tools.astro";
+import AboutHome from "../components/AboutHome.astro";
+import PortfolioSection from "../components/PortfolioSection.astro";
+import PostSection from "../components/PostSection.astro";
+import NavLinks from "../components/NavLinks.astro";
+import { links } from "../data/MenuData";
+import AOS from "aos";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <NavLinks origin={links} />
+    <ToogleDarkBtn />
+    <BtnToTop />
+    <main>
+      <Hero />
+      <Divider1 />
+      <Skills />
+      <DividerTop
+        colorLight="fill__white"
+        colorDark="purple__dark"
+        dividerBg="secundary"
+        dividerBgDark="dark__background"
+      />
+      <Tools />
+      <DividerTop
+        colorLight="fill__purple"
+        colorDark="dark__primary"
+        dividerBg="dark__background"
+      />
+      <AboutHome />
+      <PortfolioSection />
+      <Divider4 />
+      <PostSection />
+    </main>
+    <Footer />
+  </body>
+</html>
